@@ -1,0 +1,23 @@
+{
+  "name": "2022-08_perguntas_respostas_back-end",
+  "version": "1.0.0",
+  "description": "Projeto de estudo: Plataforma de perguntas e respostas beaseado no Yahoo / ask.fm",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Formacao-Node-js/2022-08_Perguntas_Respostas_Back-end.git"
+  },
+  "author": "Vinícius Soares = KyuaKun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Formacao-Node-js/2022-08_Perguntas_Respostas_Back-end/issues"
+  },
+  "homepage": "https://github.com/Formacao-Node-js/2022-08_Perguntas_Respostas_Back-end#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
