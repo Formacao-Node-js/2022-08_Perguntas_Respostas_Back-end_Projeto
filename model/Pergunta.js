@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const connection = require('../database/database')
+const connection = require("../database/database");
 
 const Pergunta = connection.define("pergunta", {
   id: {
@@ -18,7 +18,7 @@ const Pergunta = connection.define("pergunta", {
   },
 });
 
-Pergunta.sync({force: false}).then(()=> {
-    console.log('Tabela Pergunta criada.')
-})
+Pergunta.sync({ force: false }).then(() => {
+  console.log('Tabela "Pergunta" criada.');
+});
 // cria tabela caso não exista | 'force' se existe, não força a criação da tabela.
