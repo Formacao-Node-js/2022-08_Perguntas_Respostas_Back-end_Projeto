@@ -19,6 +19,9 @@
   "homepage": "https://github.com/Formacao-Node-js/2022-08_Perguntas_Respostas_Back-end#readme",
   "dependencies": {
     "express": "^4.18.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "postgres": "^3.2.4",
     "sequelize": "^6.21.3"
   }
 }
