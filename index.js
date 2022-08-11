@@ -1,8 +1,8 @@
 const { json } = require("express");
 const express = require("express");
 const cors = require("cors");
-const app = express();
 const connection = require("./database/database");
+const app = express();
 // Models
 const Pergunta = require("./model/Pergunta");
 
@@ -22,7 +22,8 @@ app.post("/perguntar", (req, res) => res.send("Pergunta enviada."));
 
 app.post("/salvarpergunta", async (req, res) => {
   const { titulo, descricao } = req.body;
-  if (!descricao && !titulo) return res.send("Os campos: 'Título' e 'Descrição' não podem estar vazios");
+  if (!descricao && !titulo)
+    return res.send("Os campos: 'Título' e 'Descrição' não podem estar vazios");
   if (!titulo) return res.send("O campo: 'Título' não pode estar vazio");
   if (!descricao) return res.send("O campo: 'Descrição' não pode estar vazio");
   /*
@@ -40,3 +41,13 @@ app.post("/salvarpergunta", async (req, res) => {
   });
   res.send("Pergunta salva com sucesso.");
 });
+
+app.get("/perguntas", async (req, res) => {
+  const response = await Pergunta.findAll();
+  res.send(response);
+});
+
+app.get("/minhapergunta", async (req, res) => {
+  const response = await Pergunta.findByPk(1)
+  res.send(response)
+})
