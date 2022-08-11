@@ -25,6 +25,15 @@ app.post("/salvarpergunta", async (req, res) => {
   if (!descricao && !titulo) return res.send("Os campos: 'Título' e 'Descrição' não podem estar vazios");
   if (!titulo) return res.send("O campo: 'Título' não pode estar vazio");
   if (!descricao) return res.send("O campo: 'Descrição' não pode estar vazio");
+  /*
+  ### Outra forma de fazer tratamento de erros menos verbosa ###
+
+  const requiredFields = ["titulo", "descricao"];
+  for (const fields of requiredFields) {
+    if (!req.body[fields]) {
+      return res.send(`O campo ${fields} precisa ser inserido`);
+    }
+  */
   await Pergunta.create({
     titulo: titulo,
     descricao: descricao,
