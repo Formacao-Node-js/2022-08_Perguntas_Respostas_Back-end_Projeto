@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const connection = require("./database/database");
 const app = express();
-// Models
+// ### Models ###
 const Pergunta = require("./model/Pergunta");
 
 // ### Database ###
@@ -16,6 +16,8 @@ app.listen(8711, () => console.log("Server working"));
 app.use(json());
 app.use(cors());
 
+
+// ### Rotas ###
 app.get("/", (req, res) => res.send("backend rodando"));
 
 app.post("/perguntar", (req, res) => res.send("Pergunta enviada."));
