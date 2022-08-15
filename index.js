@@ -16,7 +16,6 @@ app.listen(8711, () => console.log("Server working"));
 app.use(json());
 app.use(cors());
 
-
 // ### Rotas ###
 app.get("/", (req, res) => res.send("backend rodando"));
 
@@ -45,11 +44,24 @@ app.post("/salvarpergunta", async (req, res) => {
 });
 
 app.get("/perguntas", async (req, res) => {
-  const response = await Pergunta.findAll();
+  const response = await Pergunta.findAll({
+    order: [
+      // rece 2 campos: campo da tabela, tipo de ordenação
+      ["created_at", "DESC"], // ASC = crescente || DESC = decrescente
+    ],
+  });
   res.send(response);
 });
 
-app.get("/minhapergunta", async (req, res) => {
-  const response = await Pergunta.findByPk(1)
-  res.send(response)
-})
+app.get("/perguntaid/:id", async (req, res) => {
+  let id = req.params.id;
+  await Pergunta.findOne({
+    where: { id: id },
+  }).then((pergunta) => {
+    if (pergunta != undefined) {
+      res.redirect("http://localhost:3000/perguntaselecionada");
+    } else {
+      res.redirect("http://localhost:3000");
+    }
+  });
+});
