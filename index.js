@@ -54,14 +54,9 @@ app.get("/perguntas", async (req, res) => {
 });
 
 app.get("/perguntaid/:id", async (req, res) => {
-  let id = req.params.id;
-  await Pergunta.findOne({
-    where: { id: id },
-  }).then((pergunta) => {
-    if (pergunta != undefined) {
-      res.redirect("http://localhost:3000/perguntaselecionada");
-    } else {
-      res.redirect("http://localhost:3000");
-    }
+  const id = req.params.id;
+  const response = await Pergunta.findOne({
+    where: { id },
   });
+  res.send(response);
 });
