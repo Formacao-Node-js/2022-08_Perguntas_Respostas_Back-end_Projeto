@@ -5,6 +5,7 @@ const connection = require("./database/database");
 const app = express();
 // ### Models ###
 const Pergunta = require("./model/Pergunta");
+const Resposta = require("./model/Resposta");
 
 // ### Database ###
 connection.authenticate().then(() => {
