@@ -61,3 +61,12 @@ app.get("/perguntaid/:id", async (req, res) => {
   });
   res.send(response);
 });
+
+app.post("/salvarresposta", async (req, res) => {
+  const { corpo, perguntaId } = req.body;
+  await Resposta.create({
+    corpo: corpo,
+    perguntaId: perguntaId,
+  });
+  res.send("Resposta salva com sucesso.");
+});
