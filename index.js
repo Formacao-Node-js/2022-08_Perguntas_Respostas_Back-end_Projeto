@@ -64,9 +64,22 @@ app.get("/perguntaid/:id", async (req, res) => {
 
 app.post("/salvarresposta", async (req, res) => {
   const { corpo, perguntaId } = req.body;
+  if (!corpo) return res.send("Os campos: 'Resposta' não pode estar vazio");
   await Resposta.create({
     corpo: corpo,
     perguntaId: perguntaId,
   });
   res.send("Resposta salva com sucesso.");
+});
+
+app.get("/resposta/:id", async (req, res) => {
+  const id = req.params.id;
+  const response = await Resposta.findAll({
+    where: { id },
+    order: [
+      // rece 2 campos: campo da tabela, tipo de ordenação
+      ["created_at", "DESC"], // ASC = crescente || DESC = decrescente
+    ],
+  });
+  res.send(response);
 });
