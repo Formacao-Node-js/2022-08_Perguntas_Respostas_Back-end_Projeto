@@ -75,11 +75,11 @@ app.post("/salvarresposta", async (req, res) => {
 app.get("/resposta/:id", async (req, res) => {
   const id = req.params.id;
   const response = await Resposta.findAll({
-    where: { id },
-    order: [
-      // rece 2 campos: campo da tabela, tipo de ordenação
-      ["created_at", "DESC"], // ASC = crescente || DESC = decrescente
-    ],
+    where: { perguntaId: id },
+    // order: [
+    //   // rece 2 campos: campo da tabela, tipo de ordenação
+    //   ["created_at", "DESC"], // ASC = crescente || DESC = decrescente
+    // ],
   });
   res.send(response);
 });
